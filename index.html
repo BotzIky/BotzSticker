@@ -124,6 +124,19 @@ header{position:sticky;top:0;z-index:100;width:100%}
 .empty-state{text-align:center;padding:60px 20px;color:var(--sub);grid-column:1/-1}
 .empty-state p{font-size:1rem;font-weight:500;margin-top:12px}
 
+.modal{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.active{display:flex}
+.modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.65);animation:fadeIn .3s ease;cursor:pointer}
+.modal-content{position:relative;z-index:2;background:#fff;border-radius:var(--radius);padding:28px 24px;max-width:420px;width:100%;box-shadow:0 12px 48px rgba(0,0,0,.25);animation:slideUp .35s cubic-bezier(.4,0,.2,1)}
+.modal-icon{text-align:center;margin-bottom:16px}
+.modal-title{font-size:1.28rem;font-weight:700;color:var(--teal);text-align:center;margin-bottom:10px}
+.modal-text{font-size:.94rem;color:var(--sub);text-align:center;line-height:1.6;margin-bottom:20px}
+.modal-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px 20px;background:var(--green);border:none;border-radius:50px;font-family:'Rubik',sans-serif;font-size:.96rem;font-weight:600;color:#fff;cursor:pointer;transition:background .2s,transform .18s;text-decoration:none}
+.modal-btn:hover{background:var(--green-dark);transform:translateY(-2px)}
+.modal-btn:active{transform:translateY(0)}
+.modal-close-btn{display:block;width:100%;padding:11px 20px;background:transparent;border:2px solid var(--teal);border-radius:50px;font-family:'Rubik',sans-serif;font-size:.94rem;font-weight:600;color:var(--teal);cursor:pointer;transition:background .2s,color .2s;margin-top:12px}
+.modal-close-btn:hover{background:var(--teal);color:#fff}
+
 footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
 .footer-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px}
 .footer-logo{flex-shrink:0;width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.25)}
@@ -137,6 +150,8 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
 .footer-copy{text-align:center;font-size:.8rem;color:rgba(255,255,255,.4);padding-top:18px;border-top:1px solid rgba(255,255,255,.1)}
 
 @keyframes popIn{0%{transform:scale(0) rotate(-10deg);opacity:0}60%{transform:scale(1.08) rotate(2deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes slideUp{0%{transform:translateY(40px);opacity:0}100%{transform:translateY(0);opacity:1}}
 </style>
 </head>
 <body>
@@ -243,6 +258,28 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
     </div>
   </div>
 </section>
+
+<div class="modal" id="infoModal">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <div class="modal-icon">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="30" stroke="#25D366" stroke-width="3"/>
+        <text x="32" y="42" text-anchor="middle" font-size="32" fill="#25D366">ℹ️</text>
+      </svg>
+    </div>
+    <h2 class="modal-title">Info & Update</h2>
+    <p class="modal-text">Semua informasi, update terbaru, dan pengumuman penting tersedia di WhatsApp Channel kami. Jangan lewatkan!</p>
+    <a href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener" class="modal-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="2"/>
+        <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="white" stroke-width="1.5"/>
+      </svg>
+      WhatsApp Channel
+    </a>
+    <button class="modal-close-btn" id="modalCloseBtn">Tutup</button>
+  </div>
+</div>
 
 <footer id="footer">
   <div class="footer-top">
@@ -374,6 +411,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
         phase = 'done';
         document.getElementById('loader').classList.add('hidden');
         cancelAnimationFrame(raf);
+        checkAndShowModal();
         return;
       }
     }
@@ -417,6 +455,33 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
     e.preventDefault(); closeMenu();
     setTimeout(function(){ document.getElementById('footer').scrollIntoView({behavior:'smooth'}); }, 380);
   });
+
+  var modal = document.getElementById('infoModal');
+  var modalOverlay = modal.querySelector('.modal-overlay');
+  var modalCloseBtn = document.getElementById('modalCloseBtn');
+
+  function showModal(){
+    modal.classList.add('active');
+  }
+
+  function hideModal(){
+    modal.classList.remove('active');
+    var now = Date.now();
+    localStorage.setItem('botzModalLastShown', now);
+  }
+
+  modalOverlay.addEventListener('click', hideModal);
+  modalCloseBtn.addEventListener('click', hideModal);
+
+  function checkAndShowModal(){
+    var lastShown = localStorage.getItem('botzModalLastShown');
+    var now = Date.now();
+    var oneDayMs = 24 * 60 * 60 * 1000;
+    
+    if(!lastShown || (now - parseInt(lastShown)) >= oneDayMs){
+      setTimeout(showModal, 2000);
+    }
+  }
 
   var allPacks = [];
   var grid = document.getElementById('packsGrid');
