@@ -525,7 +525,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
     renderPacks(allPacks.filter(function(i){ return i.pack.toLowerCase().includes(q); }));
   });
 
-  fetch('https://json.botzaku.eu.org/sticker.json')
+  fetch('https://sticker.botzaku.eu.org/data.json')
     .then(function(r){ return r.json(); })
     .then(function(json){ if(json&&json.data) allPacks=json.data; renderPacks(allPacks); })
     .catch(function(){ renderPacks([]); })
