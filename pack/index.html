@@ -528,7 +528,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
     document.getElementById('stickersGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#667781"><p>Pack sticker tidak ditemukan.</p></div>';
     setTimeout(startExpand, 700);
   } else {
-    fetch('https://json.botzaku.eu.org/sticker.json')
+    fetch('https://sticker.botzaku.eu.org/data.json')
       .then(function(r){ return r.json(); })
       .then(function(json){
         if(!json || !json.data){
