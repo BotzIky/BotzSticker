@@ -449,7 +449,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
       card.addEventListener('click', function(){
         var slug = card.getAttribute('data-slug');
         card.classList.add('clicking');
-        setTimeout(function(){ window.location.href = '/pack/'+slug; }, 420);
+        setTimeout(function(){ window.location.href = '/pack?name='+slug; }, 420);
       });
     });
   }
