@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Pack Sticker - BotzSticker</title>
+<meta name="description" id="pageDesc" content="Download sticker WhatsApp dari pack ini. BotzSticker adalah platform terlengkap untuk menemukan dan mengunduh kumpulan sticker WhatsApp terbaik.">
+<meta name="keywords" content="sticker whatsapp, pack sticker wa, download sticker whatsapp, sticker lucu, sticker aesthetic, kumpulan sticker, botzsticker, sticker gratis whatsapp">
+<meta name="author" content="Riski Yanda">
+<meta name="robots" content="index, follow">
+<meta property="og:title" id="ogTitle" content="Pack Sticker - BotzSticker">
+<meta property="og:description" id="ogDesc" content="Download sticker WhatsApp dari pack ini.">
+<meta property="og:type" content="website">
+<meta property="og:url" id="ogUrl" content="https://sticker.botzaku.eu.org">
+<meta property="og:image" id="ogImage" content="https://cdn.botzaku.eu.org/1swI1Jw4SsemivLJ6Q_i1AQU-j3h5HyYd">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="twTitle" content="Pack Sticker - BotzSticker">
+<meta name="twitter:description" id="twDesc" content="Download sticker WhatsApp dari pack ini.">
+<meta name="twitter:image" id="twImage" content="https://cdn.botzaku.eu.org/1swI1Jw4SsemivLJ6Q_i1AQU-j3h5HyYd">
+<link rel="icon" type="image/png" href="https://cdn.botzaku.eu.org/1swI1Jw4SsemivLJ6Q_i1AQU-j3h5HyYd">
+<link rel="apple-touch-icon" href="https://cdn.botzaku.eu.org/1swI1Jw4SsemivLJ6Q_i1AQU-j3h5HyYd">
+<link rel="canonical" id="canonical" href="https://sticker.botzaku.eu.org">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--green:#25D366;--green-dark:#128C7E;--green-light:#dcf8c6;
+--teal:#075E54;--bg:#f0f2f5;--text:#111b21;--sub:#667781;
+--radius:18px;--shadow:0 4px 24px rgba(0,0,0,.10);
+--header-h:62px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Rubik',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+#loader{position:fixed;inset:0;z-index:9999;pointer-events:all;overflow:hidden}
+#loader.hidden{display:none}
+#bubble-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#loader-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;pointer-events:none}
+#loader-logo-text{color:#fff;font-size:1.05rem;font-weight:600;margin-top:14px;letter-spacing:.07em;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+
+header{position:sticky;top:0;z-index:100;width:100%}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:var(--header-h);position:relative;z-index:2}
+.logo-area{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-area img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
+.logo-name{font-size:1.22rem;font-weight:800;color:#fff;letter-spacing:.01em}
+.logo-name span{color:var(--green-light)}
+.hamburger-btn{background:none;border:none;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s}
+.hamburger-btn:hover{background:rgba(255,255,255,.13)}
+
+#menuSvg line{
+  transition:all .3s ease;
+  transform-origin:center;
+}
+#menuSvg.active #mL1{
+  transform:rotate(45deg) translateY(6px);
+}
+#menuSvg.active #mL2{
+  opacity:0;
+}
+#menuSvg.active #mL3{
+  transform:rotate(-45deg) translateY(-6px);
+}
+
+.nav-drawer{
+  position:fixed;
+  top:var(--header-h);
+  right:-300px;
+  width:270px;
+  height:calc(100vh - var(--header-h));
+  background:#fff;
+  z-index:98;
+  box-shadow:-6px 0 32px rgba(0,0,0,.13);
+  transition:right .38s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;
+  border-radius:18px 0 0 18px;
+}
+.nav-drawer.open{right:0}
+.nav-drawer-overlay{
+  position:fixed;
+  top:var(--header-h);left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0);
+  z-index:97;pointer-events:none;
+  transition:background .38s;
+}
+.nav-drawer-overlay.active{background:rgba(0,0,0,.28);pointer-events:all}
+.nav-drawer-header{padding:20px 18px 12px;border-bottom:1px solid #f0f2f5;display:flex;align-items:center;gap:10px}
+.nav-drawer-logo-wrap{display:flex;align-items:center;gap:9px;flex:1}
+.nav-drawer-logo-wrap span{font-weight:800;font-size:1.05rem;color:var(--teal)}
+.nav-links{padding:8px 0;flex:1}
+.nav-links a{display:flex;align-items:center;gap:14px;padding:13px 20px;text-decoration:none;color:var(--text);font-size:.96rem;font-weight:500;border-radius:12px;margin:2px 8px;transition:background .18s,color .18s}
+.nav-links a:hover{background:var(--green-light);color:var(--teal)}
+.nav-links a svg{flex-shrink:0}
+
+.pack-detail-section{padding:24px 20px 28px;max-width:1100px;margin:0 auto}
+.pack-header{text-align:center;margin-bottom:28px}
+.pack-title{font-size:1.68rem;font-weight:800;color:var(--teal);margin-bottom:6px}
+.pack-count{font-size:1rem;color:var(--sub);font-weight:500}
+.back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#fff;border:none;border-radius:50px;font-family:'Rubik',sans-serif;font-size:.94rem;font-weight:600;color:var(--teal);cursor:pointer;box-shadow:var(--shadow);margin-bottom:20px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.back-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(0,0,0,.15)}
+
+.stickers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+@media(max-width:600px){.stickers-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+
+.sticker-item{position:relative;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .22s;animation:fadeInUp .4s ease both}
+.sticker-item:hover{transform:translateY(-4px) scale(1.03)}
+.sticker-img-wrap{position:relative;width:100%;padding-top:100%;background:#fafafa}
+.sticker-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:8px}
+.sticker-footer{padding:10px 12px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f0f2f5}
+.sticker-num{font-size:.82rem;font-weight:600;color:var(--sub)}
+.wa-btn{background:var(--green);border:none;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .18s;box-shadow:0 2px 8px rgba(37,211,102,.3)}
+.wa-btn:hover{background:var(--green-dark);transform:scale(1.08)}
+.wa-btn:active{transform:scale(.95)}
+
+.modal{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.active{display:flex}
+.modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.65);animation:fadeIn .3s ease}
+.modal-content{position:relative;z-index:2;background:#fff;border-radius:var(--radius);padding:28px 24px;max-width:420px;width:100%;box-shadow:0 12px 48px rgba(0,0,0,.25);animation:slideUp .35s cubic-bezier(.4,0,.2,1)}
+.modal-icon{text-align:center;margin-bottom:16px}
+.modal-title{font-size:1.28rem;font-weight:700;color:var(--teal);text-align:center;margin-bottom:10px}
+.modal-text{font-size:.94rem;color:var(--sub);text-align:center;line-height:1.6;margin-bottom:24px}
+.modal-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px 20px;background:var(--green);border:none;border-radius:50px;font-family:'Rubik',sans-serif;font-size:.96rem;font-weight:600;color:#fff;cursor:pointer;transition:background .2s,transform .18s;text-decoration:none}
+.modal-btn:hover{background:var(--green-dark);transform:translateY(-2px)}
+.modal-btn:active{transform:translateY(0)}
+
+footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:10px}
+.footer-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px}
+.footer-logo{flex-shrink:0;width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.25)}
+.footer-brand{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:4px}
+.footer-brand span{color:var(--green-light)}
+.footer-desc{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.6;max-width:440px}
+.footer-social-title{font-size:.9rem;font-weight:600;margin-bottom:12px;color:rgba(255,255,255,.85)}
+.footer-socials{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.social-btn{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);transition:background .2s,transform .18s;text-decoration:none}
+.social-btn:hover{background:rgba(255,255,255,.22);transform:translateY(-3px)}
+.footer-copy{text-align:center;font-size:.8rem;color:rgba(255,255,255,.4);padding-top:18px;border-top:1px solid rgba(255,255,255,.1)}
+
+@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+@keyframes slideUp{0%{transform:translateY(40px);opacity:0}100%{transform:translateY(0);opacity:1}}
+@keyframes fadeInUp{0%{transform:translateY(20px);opacity:0}100%{transform:translateY(0);opacity:1}}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <canvas id="bubble-canvas"></canvas>
+  <div id="loader-content">
+    <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="lg1" cx="38%" cy="30%" r="65%">
+          <stop offset="0%" stop-color="#c6f8e0"/>
+          <stop offset="100%" stop-color="#20c95e"/>
+        </radialGradient>
+        <filter id="lglow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <circle cx="44" cy="44" r="38" fill="url(#lg1)" filter="url(#lglow)">
+        <animate attributeName="r" values="38;42;38" dur="1.6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="30" cy="30" r="6" fill="rgba(255,255,255,0.22)">
+        <animate attributeName="r" values="6;8;6" dur="2.1s" repeatCount="indefinite"/>
+      </circle>
+      <text x="44" y="49" text-anchor="middle" font-family="Rubik,sans-serif" font-weight="900" font-size="10.5" fill="#fff" letter-spacing="0.4">BotzSticker</text>
+    </svg>
+    <div id="loader-logo-text">Memuat sticker...</div>
+  </div>
+</div>
+
+<div class="nav-drawer-overlay" id="navOverlay"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-header">
+    <div class="nav-drawer-logo-wrap">
+      <span>BotzSticker</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#footer" id="aboutLink">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#25D366" stroke-width="1.8"/><line x1="10" y1="9" x2="10" y2="14" stroke="#25D366" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="6.5" r="1" fill="#25D366"/></svg>
+      Tentang
+    </a>
+    <a href="https://riskynd.eu.org" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7.5" r="3.2" stroke="#25D366" stroke-width="1.8"/><path d="M3.5 18c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="#25D366" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Author
+    </a>
+    <a href="https://riskynd.eu.org/donate" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 16.5S3 12.3 3 7.5a4 4 0 0 1 7-2.6 4 4 0 0 1 7 2.6c0 4.8-7 9-7 9z" stroke="#e84393" stroke-width="1.8"/></svg>
+      Donasi
+    </a>
+  </div>
+</nav>
+
+<header id="mainHeader">
+  <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0" viewBox="0 0 1200 62" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="hGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#075E54"/>
+        <stop offset="55%" stop-color="#128C7E"/>
+        <stop offset="100%" stop-color="#1fad58"/>
+      </linearGradient>
+      <pattern id="hDots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+        <circle cx="14" cy="14" r="1.2" fill="rgba(255,255,255,0.07)"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="62" fill="url(#hGrad)"/>
+    <rect width="1200" height="62" fill="url(#hDots)"/>
+    <ellipse cx="160" cy="31" rx="160" ry="40" fill="rgba(255,255,255,0.04)"/>
+    <ellipse cx="1080" cy="18" rx="110" ry="32" fill="rgba(255,255,255,0.04)"/>
+  </svg>
+  <div class="header-inner">
+    <a class="logo-area" href="/">
+      <img src="https://cdn.botzaku.eu.org/1swI1Jw4SsemivLJ6Q_i1AQU-j3h5HyYd" alt="BotzSticker Logo">
+      <span class="logo-name">Botz<span>Sticker</span></span>
+    </a>
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Buka menu">
+      <svg id="menuSvg" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+        <line id="mL1" x1="5" y1="9" x2="25" y2="9" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <line id="mL2" x1="5" y1="15" x2="25" y2="15" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <line id="mL3" x1="5" y1="21" x2="25" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<section class="pack-detail-section">
+  <a href="/" class="back-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Kembali
+  </a>
+  
+  <div class="pack-header">
+    <h1 class="pack-title" id="packTitle">Loading...</h1>
+    <p class="pack-count" id="packCount">0 sticker</p>
+  </div>
+  
+  <div class="stickers-grid" id="stickersGrid"></div>
+</section>
+
+<div class="modal" id="maintenanceModal">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <div class="modal-icon">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="30" stroke="#f39c12" stroke-width="3"/>
+        <text x="32" y="42" text-anchor="middle" font-size="32" fill="#f39c12">⚠️</text>
+      </svg>
+    </div>
+    <h2 class="modal-title">Bot Sedang Pemeliharaan</h2>
+    <p class="modal-text">Mohon maaf atas ketidaknyamanannya. Saat ini bot sedang dalam pemeliharaan atau mengalami gangguan. Silakan coba lagi nanti atau ikuti channel WhatsApp kami untuk informasi lebih lanjut.</p>
+    <a href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener" class="modal-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="2"/>
+        <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="white" stroke-width="1.5"/>
+      </svg>
+      WhatsApp Channel
+    </a>
+  </div>
+</div>
+
+<footer id="footer">
+  <div class="footer-top">
+    <img class="footer-logo" src="https://cdn.botzaku.eu.org/1swI1Jw4SsemivLJ6Q_i1AQU-j3h5HyYd" alt="Logo">
+    <div>
+      <div class="footer-brand">Botz<span>Sticker</span></div>
+      <div class="footer-desc">BotzSticker adalah platform terlengkap untuk menemukan dan mengunduh kumpulan sticker WhatsApp terbaik. Temukan ribuan pack sticker lucu, aesthetic, dan unik untuk percakapan WhatsApp kamu.</div>
+    </div>
+  </div>
+  <div class="footer-social-title">Terhubung dengan kami</div>
+  <div class="footer-socials">
+    <a class="social-btn" href="https://riskynd.eu.org" target="_blank" rel="noopener" title="Author">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7.5" r="3.2" stroke="rgba(255,255,255,0.85)" stroke-width="1.8"/><path d="M3.5 18c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </a>
+    <a class="social-btn" href="https://instagram.com/iikyynd" target="_blank" rel="noopener" title="Instagram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="rgba(255,255,255,0.85)" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="rgba(255,255,255,0.85)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="rgba(255,255,255,0.85)"/></svg>
+    </a>
+    <a class="social-btn" href="https://tiktok.com/@riskynd.eu.org" target="_blank" rel="noopener" title="TikTok">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="social-btn" href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener" title="WhatsApp Channel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="rgba(255,255,255,0.85)" stroke-width="2"/><path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/></svg>
+    </a>
+  </div>
+  <div class="footer-copy">© 2025 BotzAku. All rights reserved.</div>
+</footer>
+
+<script>
+(function(){
+
+  var canvas = document.getElementById('bubble-canvas');
+  var ctx = canvas.getContext('2d');
+  var W, H;
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(a,b){ return a + Math.random()*(b-a); }
+
+  var bubbles = [];
+  function mkBubbles(){
+    bubbles = [];
+    var n = 20;
+    for(var i=0;i<n;i++){
+      bubbles.push({
+        x: rand(W*0.1, W*0.9),
+        y: rand(H*0.1, H*0.9),
+        r: rand(22, 60),
+        baseR: 0,
+        vx: rand(-0.35, 0.35),
+        vy: rand(-0.55, -0.15),
+        phase: rand(0, Math.PI*2),
+        spd: rand(0.018, 0.034),
+        hue: rand(150, 168),
+        light: rand(40, 60),
+        alpha: rand(0.5, 0.92)
+      });
+    }
+    bubbles[0].x = W/2; bubbles[0].y = H/2; bubbles[0].r = 65; bubbles[0].alpha = 1;
+  }
+
+  function drawB(b, alphaOverride){
+    var a = alphaOverride !== undefined ? alphaOverride : b.alpha;
+    var g = ctx.createRadialGradient(b.x - b.r*0.3, b.y - b.r*0.32, b.r*0.04, b.x, b.y, b.r);
+    g.addColorStop(0, 'hsla('+b.hue+',80%,'+(b.light+22)+'%,'+a+')');
+    g.addColorStop(0.55, 'hsla('+b.hue+',76%,'+b.light+'%,'+a+')');
+    g.addColorStop(1, 'hsla('+(b.hue-10)+',88%,'+(b.light-14)+'%,'+(a*0.65)+')');
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, Math.max(0.01, b.r), 0, Math.PI*2);
+    ctx.fillStyle = g;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(b.x - b.r*0.27, b.y - b.r*0.27, b.r*0.21, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(255,255,255,'+(a*0.28)+')';
+    ctx.fill();
+  }
+
+  var phase = 'float';
+  var t = 0;
+  var expProg = 0;
+  var disProg = 0;
+  var raf;
+
+  function loop(){
+    ctx.clearRect(0, 0, W, H);
+    t += 0.016;
+
+    if(phase === 'float'){
+      ctx.fillStyle = '#075E54';
+      ctx.fillRect(0, 0, W, H);
+      bubbles.forEach(function(b){
+        b.x += b.vx + Math.sin(t*b.spd*3 + b.phase)*0.28;
+        b.y += b.vy*0.38 + Math.cos(t*b.spd*2 + b.phase)*0.22;
+        if(b.y < -b.r*2) b.y = H + b.r;
+        drawB(b);
+      });
+
+    } else if(phase === 'expand'){
+      expProg = Math.min(1, expProg + 0.019);
+      ctx.fillStyle = '#075E54';
+      ctx.fillRect(0, 0, W, H);
+      var diagonal = Math.sqrt(W*W + H*H);
+      bubbles.forEach(function(b, i){
+        var delay = i * 0.035;
+        var p = Math.max(0, Math.min(1, (expProg - delay) / (1 - delay * 0.4)));
+        var ep = 1 - Math.pow(1 - p, 2.8);
+        b.r = b.baseR + ep * (diagonal * 0.82 - b.baseR);
+        b.alpha = Math.max(0, b.alpha - ep * 0.28);
+        drawB(b);
+      });
+      if(expProg >= 1){ phase = 'dissolve'; disProg = 0; }
+
+    } else if(phase === 'dissolve'){
+      disProg = Math.min(1, disProg + 0.028);
+      var fade = 1 - disProg;
+      ctx.save();
+      ctx.globalAlpha = fade;
+      ctx.fillStyle = '#075E54';
+      ctx.fillRect(0, 0, W, H);
+      bubbles.forEach(function(b){
+        drawB(b, b.alpha * fade);
+      });
+      ctx.restore();
+      if(disProg >= 1){
+        phase = 'done';
+        document.getElementById('loader').classList.add('hidden');
+        cancelAnimationFrame(raf);
+        return;
+      }
+    }
+
+    raf = requestAnimationFrame(loop);
+  }
+
+  function startExpand(){
+    if(phase !== 'float') return;
+    bubbles.forEach(function(b){ b.baseR = b.r; });
+    phase = 'expand';
+  }
+
+  mkBubbles();
+  loop();
+
+  var isOpen = false;
+  var drawer = document.getElementById('navDrawer');
+  var overlay = document.getElementById('navOverlay');
+  var btn = document.getElementById('hamburgerBtn');
+  var svg = document.getElementById('menuSvg');
+  var aboutLink = document.getElementById('aboutLink');
+
+  function openMenu(){
+    isOpen = true;
+    drawer.classList.add('open');
+    overlay.classList.add('active');
+    svg.classList.add('active');
+  }
+  
+  function closeMenu(){
+    isOpen = false;
+    drawer.classList.remove('open');
+    overlay.classList.remove('active');
+    svg.classList.remove('active');
+  }
+
+  btn.addEventListener('click', function(){ isOpen ? closeMenu() : openMenu(); });
+  overlay.addEventListener('click', closeMenu);
+  aboutLink.addEventListener('click', function(e){
+    e.preventDefault(); closeMenu();
+    setTimeout(function(){ document.getElementById('footer').scrollIntoView({behavior:'smooth'}); }, 380);
+  });
+
+  var modal = document.getElementById('maintenanceModal');
+
+  function showModal(){
+    modal.classList.add('active');
+  }
+
+  function hideModal(){
+    modal.classList.remove('active');
+  }
+
+  modal.querySelector('.modal-overlay').addEventListener('click', hideModal);
+
+  function slugify(n){ return n.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9\-]/g,''); }
+
+  function getPackNameFromURL(){
+    var params = new URLSearchParams(window.location.search);
+    return params.get('name');
+  }
+
+  function checkBotOnline(callback){
+    fetch('https://host.optikl.ink/bot/online')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(data && data.ok !== undefined){
+          callback(data.online === true);
+        } else {
+          callback(false);
+        }
+      })
+      .catch(function(){
+        callback(false);
+      });
+  }
+
+  function handleWAClick(packName, number){
+    checkBotOnline(function(online){
+      if(online){
+        var text = encodeURIComponent(packName + '|' + number);
+        window.open('https://wa.me/6285355613558?text=' + text, '_blank');
+      } else {
+        showModal();
+      }
+    });
+  }
+
+  function renderStickers(packName, urls){
+    var grid = document.getElementById('stickersGrid');
+    var html = '';
+    urls.forEach(function(url, idx){
+      var num = idx + 1;
+      var delay = (idx%20)*0.025;
+      html += '<div class="sticker-item" style="animation-delay:'+delay+'s">';
+      html += '<div class="sticker-img-wrap"><img src="'+url+'" alt="Sticker '+num+'" loading="lazy"></div>';
+      html += '<div class="sticker-footer"><span class="sticker-num">#'+num+'</span>';
+      html += '<button class="wa-btn" data-pack="'+packName+'" data-num="'+num+'" title="Kirim ke WhatsApp">';
+      html += '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="2"/><path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="white" stroke-width="1.5"/></svg>';
+      html += '</button></div></div>';
+    });
+    grid.innerHTML = html;
+
+    grid.querySelectorAll('.wa-btn').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        var pack = this.getAttribute('data-pack');
+        var num = this.getAttribute('data-num');
+        handleWAClick(pack, num);
+      });
+    });
+  }
+
+  function updateMeta(packName, firstImage, count){
+    var title = packName + ' - BotzSticker';
+    var desc = 'Download ' + count + ' sticker dari pack "' + packName + '". BotzSticker adalah platform terlengkap untuk menemukan dan mengunduh kumpulan sticker WhatsApp terbaik.';
+    var url = 'https://sticker.botzaku.eu.org/pack?name=' + encodeURIComponent(slugify(packName));
+
+    document.title = title;
+    document.getElementById('pageTitle').textContent = title;
+    document.getElementById('pageDesc').setAttribute('content', desc);
+    document.getElementById('ogTitle').setAttribute('content', title);
+    document.getElementById('ogDesc').setAttribute('content', desc);
+    document.getElementById('ogUrl').setAttribute('content', url);
+    document.getElementById('ogImage').setAttribute('content', firstImage);
+    document.getElementById('twTitle').setAttribute('content', title);
+    document.getElementById('twDesc').setAttribute('content', desc);
+    document.getElementById('twImage').setAttribute('content', firstImage);
+    document.getElementById('canonical').setAttribute('href', url);
+  }
+
+  var packSlug = getPackNameFromURL();
+  if(!packSlug){
+    document.getElementById('packTitle').textContent = 'Pack tidak ditemukan';
+    document.getElementById('packCount').textContent = '0 sticker';
+    document.getElementById('stickersGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#667781"><p>Pack sticker tidak ditemukan.</p></div>';
+    setTimeout(startExpand, 700);
+  } else {
+    fetch('https://json.botzaku.eu.org/sticker.json')
+      .then(function(r){ return r.json(); })
+      .then(function(json){
+        if(!json || !json.data){
+          throw new Error('Invalid data');
+        }
+        var grouped = {};
+        json.data.forEach(function(item){
+          if(!grouped[item.pack]) grouped[item.pack] = [];
+          grouped[item.pack].push(item.url);
+        });
+
+        var foundPack = null;
+        var foundUrls = null;
+        Object.keys(grouped).forEach(function(pack){
+          if(slugify(pack) === packSlug){
+            foundPack = pack;
+            foundUrls = grouped[pack];
+          }
+        });
+
+        if(foundPack && foundUrls){
+          document.getElementById('packTitle').textContent = foundPack;
+          document.getElementById('packCount').textContent = foundUrls.length + ' sticker';
+          renderStickers(foundPack, foundUrls);
+          updateMeta(foundPack, foundUrls[0], foundUrls.length);
+        } else {
+          document.getElementById('packTitle').textContent = 'Pack tidak ditemukan';
+          document.getElementById('packCount').textContent = '0 sticker';
+          document.getElementById('stickersGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#667781"><p>Pack sticker tidak ditemukan.</p></div>';
+        }
+      })
+      .catch(function(){
+        document.getElementById('packTitle').textContent = 'Gagal memuat';
+        document.getElementById('packCount').textContent = '0 sticker';
+        document.getElementById('stickersGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#667781"><p>Gagal memuat data sticker.</p></div>';
+      })
+      .finally(function(){
+        setTimeout(startExpand, 700);
+      });
+  }
+
+})();
+</script>
+</body>
+</html>
