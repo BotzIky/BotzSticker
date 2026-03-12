@@ -176,10 +176,6 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
     </div>
   </div>
   <div class="nav-links">
-    <a href="/">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 9l7-6 7 6v9h-5v-5H8v5H3z" stroke="#25D366" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      Beranda
-    </a>
     <a href="#footer" id="aboutLink">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#25D366" stroke-width="1.8"/><line x1="10" y1="9" x2="10" y2="14" stroke="#25D366" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="6.5" r="1" fill="#25D366"/></svg>
       Tentang
@@ -255,6 +251,28 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
   </div>
 </section>
 
+<div class="modal" id="infoModal">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <div class="modal-icon">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="30" stroke="#25D366" stroke-width="3"/>
+        <text x="32" y="42" text-anchor="middle" font-size="32" fill="#25D366">ℹ️</text>
+      </svg>
+    </div>
+    <h2 class="modal-title">Info & Update</h2>
+    <p class="modal-text">Semua informasi, update terbaru, dan pengumuman penting tersedia di WhatsApp Channel kami. Jangan lewatkan!</p>
+    <a href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener" class="modal-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="2"/>
+        <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="white" stroke-width="1.5"/>
+      </svg>
+      WhatsApp Channel
+    </a>
+    <button class="modal-close-btn" id="modalCloseBtn">Tutup</button>
+  </div>
+</div>
+
 <div class="modal" id="maintenanceModal">
   <div class="modal-overlay"></div>
   <div class="modal-content">
@@ -273,7 +291,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
       </svg>
       WhatsApp Channel
     </a>
-    <button class="modal-close-btn" id="modalCloseBtn">Tutup</button>
+    <button class="modal-close-btn" id="modalCloseBtn2">Tutup</button>
   </div>
 </div>
 
@@ -407,6 +425,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
         phase = 'done';
         document.getElementById('loader').classList.add('hidden');
         cancelAnimationFrame(raf);
+        checkAndShowInfoModal();
         return;
       }
     }
@@ -451,20 +470,47 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
     setTimeout(function(){ document.getElementById('footer').scrollIntoView({behavior:'smooth'}); }, 380);
   });
 
-  var modal = document.getElementById('maintenanceModal');
-  var modalOverlay = modal.querySelector('.modal-overlay');
-  var modalCloseBtn = document.getElementById('modalCloseBtn');
+  var infoModal = document.getElementById('infoModal');
+  var infoModalOverlay = infoModal.querySelector('.modal-overlay');
+  var infoModalCloseBtn = document.getElementById('modalCloseBtn');
 
-  function showModal(){
-    modal.classList.add('active');
+  function showInfoModal(){
+    infoModal.classList.add('active');
   }
 
-  function hideModal(){
-    modal.classList.remove('active');
+  function hideInfoModal(){
+    infoModal.classList.remove('active');
+    var now = Date.now();
+    localStorage.setItem('botzInfoModalLastShown', now);
   }
 
-  modalOverlay.addEventListener('click', hideModal);
-  modalCloseBtn.addEventListener('click', hideModal);
+  infoModalOverlay.addEventListener('click', hideInfoModal);
+  infoModalCloseBtn.addEventListener('click', hideInfoModal);
+
+  function checkAndShowInfoModal(){
+    var lastShown = localStorage.getItem('botzInfoModalLastShown');
+    var now = Date.now();
+    var oneDayMs = 24 * 60 * 60 * 1000;
+    
+    if(!lastShown || (now - parseInt(lastShown)) >= oneDayMs){
+      setTimeout(showInfoModal, 2000);
+    }
+  }
+
+  var maintenanceModal = document.getElementById('maintenanceModal');
+  var maintenanceModalOverlay = maintenanceModal.querySelector('.modal-overlay');
+  var maintenanceModalCloseBtn = document.getElementById('modalCloseBtn2');
+
+  function showMaintenanceModal(){
+    maintenanceModal.classList.add('active');
+  }
+
+  function hideMaintenanceModal(){
+    maintenanceModal.classList.remove('active');
+  }
+
+  maintenanceModalOverlay.addEventListener('click', hideMaintenanceModal);
+  maintenanceModalCloseBtn.addEventListener('click', hideMaintenanceModal);
 
   var bratInput = document.getElementById('bratInput');
   var charCount = document.getElementById('charCount');
@@ -488,7 +534,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
     if(!val) return;
 
     if(!botOnline){
-      showModal();
+      showMaintenanceModal();
       return;
     }
 
@@ -503,12 +549,12 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
         botOnline = true;
       } else {
         botOnline = false;
-        showModal();
+        showMaintenanceModal();
       }
     })
     .catch(function(){
       botOnline = false;
-      showModal();
+      showMaintenanceModal();
     })
     .finally(function(){
       setTimeout(startExpand, 700);
