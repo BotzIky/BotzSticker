@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brat Generator - BotzSticker</title>
 <meta name="description" content="Buat sticker brat custom dengan teks sendiri. BotzSticker adalah platform terlengkap untuk menemukan dan mengunduh kumpulan sticker WhatsApp terbaik.">
-<meta name="keywords" content="sticker whatsapp, brat generator, brat sticker, pack sticker wa, download sticker whatsapp, sticker lucu, sticker aesthetic, kumpulan sticker, botzsticker, sticker gratis whatsapp">
+<meta name="keywords" content="sticker whatsapp, brat generator, brat sticker, pack sticker wa, download sticker whatsapp, sticker lucu, sticker aesthetic, kumpulan sticker, botzsticker, sticker gratis">
 <meta name="author" content="Riski Yanda">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Brat Generator - BotzSticker">
@@ -87,41 +87,34 @@ header{position:sticky;top:0;z-index:100;width:100%}
 .nav-drawer-logo-wrap{display:flex;align-items:center;gap:9px;flex:1}
 .nav-drawer-logo-wrap span{font-weight:800;font-size:1.05rem;color:var(--teal)}
 .nav-links{padding:8px 0;flex:1}
-.nav-links a{display:flex;align-items:center;gap:14px;padding:13px 20px;text-decoration:none;color:var(--text);font-size:.96rem;font-weight:500;border-radius:12px;margin:2px 8px;transition:background .18s,color .18s}
+.nav-links a{display:flex;align-items:center;gap:14px;padding:13px 20px;text-decoration:none;color:var(--text);font-size:.96rem;font-weight:500;border-radius:12px;margin:2px 8px;transition:background .2s,color .2s}
 .nav-links a:hover{background:var(--green-light);color:var(--teal)}
 .nav-links a svg{flex-shrink:0}
 
-.brat-section{padding:28px 20px 40px;max-width:680px;margin:0 auto}
-.back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#fff;border:none;border-radius:50px;font-family:'Rubik',sans-serif;font-size:.94rem;font-weight:600;color:var(--teal);cursor:pointer;box-shadow:var(--shadow);margin-bottom:24px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.brat-section{padding:28px 20px 40px;max-width:780px;margin:0 auto}
+.back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#fff;border:none;border-radius:50px;font-family:'Rubik',sans-serif;font-size:.94rem;font-weight:600;color:var(--teal);cursor:pointer;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.08);transition:transform .18s ease, box-shadow .18s ease}
 .back-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(0,0,0,.15)}
 
-.brat-header{text-align:center;margin-bottom:36px}
+.brat-header{text-align:center;margin:18px 0 26px}
 .brat-title{font-size:2rem;font-weight:900;color:var(--teal);margin-bottom:8px}
 .brat-desc{font-size:1rem;color:var(--sub);line-height:1.6}
 
-.brat-form-card{background:#fff;border-radius:var(--radius);padding:32px 28px;box-shadow:var(--shadow);animation:fadeInUp .5s ease}
-.form-label{display:block;font-size:.96rem;font-weight:600;color:var(--text);margin-bottom:10px}
-.form-input{width:100%;padding:16px 18px;border:2px solid #e9edef;border-radius:12px;font-family:'Rubik',sans-serif;font-size:1rem;color:var(--text);transition:border-color .2s;outline:none;resize:vertical;min-height:120px}
-.form-input:focus{border-color:var(--green)}
-.form-input::placeholder{color:#aaa}
-.char-counter{text-align:right;font-size:.82rem;color:var(--sub);margin-top:6px}
-.submit-btn{width:100%;padding:16px 20px;background:var(--green);border:none;border-radius:50px;font-family:'Rubik',sans-serif;font-size:1.02rem;font-weight:700;color:#fff;cursor:pointer;transition:background .2s,transform .18s;margin-top:24px;display:flex;align-items:center;justify-content:center;gap:10px}
-.submit-btn:hover{background:var(--green-dark);transform:translateY(-2px)}
-.submit-btn:active{transform:translateY(0)}
-.submit-btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
-
-.modal{position:fixed;inset:0;z-index:9998;display:none;align-items:center;justify-content:center;padding:20px}
-.modal.active{display:flex}
-.modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.65);animation:fadeIn .3s ease;cursor:pointer}
-.modal-content{position:relative;z-index:2;background:#fff;border-radius:var(--radius);padding:28px 24px;max-width:420px;width:100%;box-shadow:0 12px 48px rgba(0,0,0,.25);animation:slideUp .35s cubic-bezier(.4,0,.2,1)}
-.modal-icon{text-align:center;margin-bottom:16px}
-.modal-title{font-size:1.28rem;font-weight:700;color:var(--teal);text-align:center;margin-bottom:10px}
-.modal-text{font-size:.94rem;color:var(--sub);text-align:center;line-height:1.6;margin-bottom:20px}
-.modal-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px 20px;background:var(--green);border:none;border-radius:50px;font-family:'Rubik',sans-serif;font-size:.96rem;font-weight:600;color:#fff;cursor:pointer;transition:background .2s,transform .18s;text-decoration:none}
-.modal-btn:hover{background:var(--green-dark);transform:translateY(-2px)}
-.modal-btn:active{transform:translateY(0)}
-.modal-close-btn{display:block;width:100%;padding:11px 20px;background:transparent;border:2px solid var(--teal);border-radius:50px;font-family:'Rubik',sans-serif;font-size:.94rem;font-weight:600;color:var(--teal);cursor:pointer;transition:background .2s,color .2s;margin-top:12px}
-.modal-close-btn:hover{background:var(--teal);color:#fff}
+.info-card{background:#fff;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow);animation:fadeInUp .5s ease}
+.badge{display:inline-flex;align-items:center;gap:10px;background:rgba(18,140,126,.08);border:1px solid rgba(18,140,126,.15);color:var(--teal);padding:10px 14px;border-radius:999px;font-weight:700;font-size:.92rem;margin-bottom:14px}
+.info-title{font-size:1.34rem;font-weight:900;color:var(--text);margin-bottom:10px}
+.info-text{font-size:1rem;color:var(--sub);line-height:1.75;margin-bottom:18px}
+.info-list{margin:0 0 18px;padding:0;list-style:none;display:grid;gap:10px}
+.info-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:14px;background:#f8fafb;border:1px solid #eef2f4}
+.info-item strong{color:var(--text)}
+.info-item span{color:var(--sub);line-height:1.55}
+.info-cta{display:grid;gap:12px;margin-top:10px}
+.primary-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 18px;background:var(--green);border:none;border-radius:50px;font-family:'Rubik',sans-serif;font-size:1.02rem;font-weight:800;color:#fff;cursor:pointer;transition:background .2s, transform .2s;text-decoration:none}
+.primary-btn:hover{background:var(--green-dark);transform:translateY(-2px)}
+.primary-btn:active{transform:translateY(0)}
+.secondary-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px 18px;background:transparent;border:2px solid var(--teal);border-radius:50px;font-family:'Rubik',sans-serif;font-size:.98rem;font-weight:800;color:var(--teal);cursor:pointer;transition:background .2s, color .2s, transform .2s;text-decoration:none}
+.secondary-btn:hover{background:var(--teal);color:#fff;transform:translateY(-2px)}
+.secondary-btn:active{transform:translateY(0)}
+.small-note{font-size:.9rem;color:var(--sub);text-align:center;line-height:1.6;margin-top:12px}
 
 footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
 .footer-top{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px}
@@ -131,7 +124,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
 .footer-desc{font-size:.85rem;color:rgba(255,255,255,.65);line-height:1.6;max-width:440px}
 .footer-social-title{font-size:.9rem;font-weight:600;margin-bottom:12px;color:rgba(255,255,255,.85)}
 .footer-socials{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
-.social-btn{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);transition:background .2s,transform .18s;text-decoration:none}
+.social-btn{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);transition:background .2s, transform .2s}
 .social-btn:hover{background:rgba(255,255,255,.22);transform:translateY(-3px)}
 .footer-copy{text-align:center;font-size:.8rem;color:rgba(255,255,255,.4);padding-top:18px;border-top:1px solid rgba(255,255,255,.1)}
 
@@ -177,15 +170,24 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
   </div>
   <div class="nav-links">
     <a href="#footer" id="aboutLink">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#25D366" stroke-width="1.8"/><line x1="10" y1="9" x2="10" y2="14" stroke="#25D366" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="6.5" r="1" fill="#25D366"/></svg>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="10" r="8" stroke="#25D366" stroke-width="1.8"/>
+        <line x1="10" y1="9" x2="10" y2="14" stroke="#25D366" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="10" cy="6.5" r="1" fill="#25D366"/>
+      </svg>
       Tentang
     </a>
     <a href="https://riskynd.eu.org" target="_blank" rel="noopener">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7.5" r="3.2" stroke="#25D366" stroke-width="1.8"/><path d="M3.5 18c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="#25D366" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="7.5" r="3.2" stroke="#25D366" stroke-width="1.8"/>
+        <path d="M3.5 18c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="#25D366" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
       Author
     </a>
     <a href="https://riskynd.eu.org/donate" target="_blank" rel="noopener">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 16.5S3 12.3 3 7.5a4 4 0 0 1 7-2.6 4 4 0 0 1 7 2.6c0 4.8-7 9-7 9z" stroke="#e84393" stroke-width="1.8"/></svg>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 16.5S3 12.3 3 7.5a4 4 0 0 1 7-2.6 4 4 0 0 1 7 2.6c0 4.8-7 9-7 9z" stroke="#e84393" stroke-width="1.8"/>
+      </svg>
       Donasi
     </a>
   </div>
@@ -233,89 +235,113 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
 
   <div class="brat-header">
     <h1 class="brat-title">Brat Generator</h1>
-    <p class="brat-desc">Buat sticker brat custom dengan teks sendiri. Masukkan teks yang kamu inginkan dan kirim ke WhatsApp!</p>
+    <p class="brat-desc">Saat ini pembuatan sticker teks hanya bisa diakses melalui panduan penggunaan dan informasi terbaru di WhatsApp Channel kami.</p>
   </div>
 
-  <div class="brat-form-card">
-    <label class="form-label" for="bratInput">Teks Brat</label>
-    <textarea class="form-input" id="bratInput" placeholder="Masukkan teks brat kamu di sini..." maxlength="200"></textarea>
-    <div class="char-counter"><span id="charCount">0</span>/200</div>
-
-    <button class="submit-btn" id="submitBtn" disabled>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="2"/>
-        <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="white" stroke-width="1.5"/>
+  <div class="info-card">
+    <div class="badge">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="#075E54" stroke-width="2"/>
+        <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="#075E54" stroke-width="1.5"/>
       </svg>
-      Kirim ke WhatsApp
-    </button>
+      Informasi Resmi
+    </div>
+
+    <div class="info-title">Pembuatan Sticker Teks Dialihkan</div>
+    <div class="info-text">
+      Untuk memastikan panduan selalu update, fitur pembuatan sticker teks saat ini hanya bisa diakses melalui informasi dan cara penggunaan yang dibagikan di WhatsApp Channel BotzSticker.
+      Silakan buka channel untuk melihat tutorial, format perintah, dan pengumuman terbaru.
+    </div>
+
+    <ul class="info-list">
+      <li class="info-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-top:2px">
+          <path d="M20 7L10 17l-5-5" stroke="#25D366" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <strong>Cara penggunaan</strong><br>
+          <span>Panduan lengkap langkah demi langkah tersedia di channel.</span>
+        </div>
+      </li>
+      <li class="info-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-top:2px">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#075E54" stroke-width="2"/>
+          <path d="M12 7v6l4 2" stroke="#075E54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <strong>Update & pengumuman</strong><br>
+          <span>Info perubahan fitur dan jadwal tersedia di sana.</span>
+        </div>
+      </li>
+      <li class="info-item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-top:2px">
+          <path d="M4 19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-6-4H6a2 2 0 0 0-2 2v14z" stroke="#128C7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 3v5h6" stroke="#128C7E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <strong>Format perintah</strong><br>
+          <span>Gunakan format terbaru sesuai yang tertera di channel.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="info-cta">
+      <a class="primary-btn" href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="2"/>
+          <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="white" stroke-width="1.5"/>
+        </svg>
+        Buka WhatsApp Channel
+      </a>
+
+      <a class="secondary-btn" href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 19V5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Lihat Cara Penggunaan
+      </a>
+    </div>
+
+    <div class="small-note">
+      Jika kamu belum bergabung, klik tombol di atas untuk mendapatkan informasi resmi dan update terbaru.
+    </div>
   </div>
 </section>
-
-<div class="modal" id="infoModal">
-  <div class="modal-overlay"></div>
-  <div class="modal-content">
-    <div class="modal-icon">
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-        <circle cx="32" cy="32" r="30" stroke="#25D366" stroke-width="3"/>
-        <text x="32" y="42" text-anchor="middle" font-size="32" fill="#25D366">ℹ️</text>
-      </svg>
-    </div>
-    <h2 class="modal-title">Info & Update</h2>
-    <p class="modal-text">Semua informasi, update terbaru, dan pengumuman penting tersedia di WhatsApp Channel kami. Jangan lewatkan!</p>
-    <a href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener" class="modal-btn">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="2"/>
-        <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="white" stroke-width="1.5"/>
-      </svg>
-      WhatsApp Channel
-    </a>
-    <button class="modal-close-btn" id="modalCloseBtn">Tutup</button>
-  </div>
-</div>
-
-<div class="modal" id="maintenanceModal">
-  <div class="modal-overlay"></div>
-  <div class="modal-content">
-    <div class="modal-icon">
-      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-        <circle cx="32" cy="32" r="30" stroke="#f39c12" stroke-width="3"/>
-        <text x="32" y="42" text-anchor="middle" font-size="32" fill="#f39c12">⚠️</text>
-      </svg>
-    </div>
-    <h2 class="modal-title">Bot Sedang Pemeliharaan</h2>
-    <p class="modal-text">Mohon maaf atas ketidaknyamanannya. Saat ini bot sedang dalam pemeliharaan atau mengalami gangguan. Silakan coba lagi nanti atau ikuti channel WhatsApp kami untuk informasi lebih lanjut.</p>
-    <a href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener" class="modal-btn">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="white" stroke-width="2"/>
-        <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="white" stroke-width="1.5"/>
-      </svg>
-      WhatsApp Channel
-    </a>
-    <button class="modal-close-btn" id="modalCloseBtn2">Tutup</button>
-  </div>
-</div>
 
 <footer id="footer">
   <div class="footer-top">
     <img class="footer-logo" src="https://cdn.botzaku.eu.org/1swI1Jw4SsemivLJ6Q_i1AQU-j3h5HyYd" alt="Logo">
     <div>
       <div class="footer-brand">Botz<span>Sticker</span></div>
-      <div class="footer-desc">BotzSticker adalah platform terlengkap untuk menemukan dan mengunduh kumpulan sticker WhatsApp terbaik. Temukan ribuan pack sticker lucu, aesthetic, dan unik untuk percakapan WhatsApp kamu.</div>
+      <div class="footer-desc">BotzSticker adalah platform terlengkap untuk menemukan dan mengunduh kumpulan sticker WhatsApp terbaik. Temukan ribuan pack sticker lucu, aesthetic, dan unik untuk percakapan kamu.</div>
     </div>
   </div>
   <div class="footer-social-title">Terhubung dengan kami</div>
   <div class="footer-socials">
     <a class="social-btn" href="https://riskynd.eu.org" target="_blank" rel="noopener" title="Author">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7.5" r="3.2" stroke="rgba(255,255,255,0.85)" stroke-width="1.8"/><path d="M3.5 18c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="7.5" r="3.2" stroke="rgba(255,255,255,0.85)" stroke-width="1.8"/>
+        <path d="M3.5 18c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
     </a>
     <a class="social-btn" href="https://instagram.com/iikyynd" target="_blank" rel="noopener" title="Instagram">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="rgba(255,255,255,0.85)" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="rgba(255,255,255,0.85)" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="rgba(255,255,255,0.85)"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="6" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+        <circle cx="18" cy="6" r="1" fill="rgba(255,255,255,0.85)"/>
+      </svg>
     </a>
     <a class="social-btn" href="https://tiktok.com/@riskynd.eu.org" target="_blank" rel="noopener" title="TikTok">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </a>
     <a class="social-btn" href="https://whatsapp.com/channel/0029Vb7MOkzKLaHt0INSaT2f" target="_blank" rel="noopener" title="WhatsApp Channel">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="rgba(255,255,255,0.85)" stroke-width="2"/><path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.524 3.655 1.432 5.167L2 22l4.982-1.397A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+        <path d="M8.5 9.5c.5 1 1.5 3 3.5 4s3-1 3-1-.5-1-1-1.5c-.3-.3-.8-.1-1.2.2-.3.2-.7.1-.9-.2C11.4 9.8 10.5 9 9.8 8.8c-.4-.1-.8.2-.9.5-.1.2-.4.2-.4.2z" stroke="rgba(255,255,255,0.85)" stroke-width="1.5"/>
+      </svg>
     </a>
   </div>
   <div class="footer-copy">© 2025 BotzAku. All rights reserved.</div>
@@ -323,7 +349,6 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
 
 <script>
 (function(){
-
   var canvas = document.getElementById('bubble-canvas');
   var ctx = canvas.getContext('2d');
   var W, H;
@@ -425,7 +450,6 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
         phase = 'done';
         document.getElementById('loader').classList.add('hidden');
         cancelAnimationFrame(raf);
-        checkAndShowInfoModal();
         return;
       }
     }
@@ -455,7 +479,7 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
     overlay.classList.add('active');
     svg.classList.add('active');
   }
-  
+
   function closeMenu(){
     isOpen = false;
     drawer.classList.remove('open');
@@ -466,100 +490,12 @@ footer{background:var(--teal);color:#fff;padding:36px 24px 18px;margin-top:40px}
   btn.addEventListener('click', function(){ isOpen ? closeMenu() : openMenu(); });
   overlay.addEventListener('click', closeMenu);
   aboutLink.addEventListener('click', function(e){
-    e.preventDefault(); closeMenu();
+    e.preventDefault();
+    closeMenu();
     setTimeout(function(){ document.getElementById('footer').scrollIntoView({behavior:'smooth'}); }, 380);
   });
 
-  var infoModal = document.getElementById('infoModal');
-  var infoModalOverlay = infoModal.querySelector('.modal-overlay');
-  var infoModalCloseBtn = document.getElementById('modalCloseBtn');
-
-  function showInfoModal(){
-    infoModal.classList.add('active');
-  }
-
-  function hideInfoModal(){
-    infoModal.classList.remove('active');
-    var now = Date.now();
-    localStorage.setItem('botzInfoModalLastShown', now);
-  }
-
-  infoModalOverlay.addEventListener('click', hideInfoModal);
-  infoModalCloseBtn.addEventListener('click', hideInfoModal);
-
-  function checkAndShowInfoModal(){
-    var lastShown = localStorage.getItem('botzInfoModalLastShown');
-    var now = Date.now();
-    var oneDayMs = 24 * 60 * 60 * 1000;
-    
-    if(!lastShown || (now - parseInt(lastShown)) >= oneDayMs){
-      setTimeout(showInfoModal, 2000);
-    }
-  }
-
-  var maintenanceModal = document.getElementById('maintenanceModal');
-  var maintenanceModalOverlay = maintenanceModal.querySelector('.modal-overlay');
-  var maintenanceModalCloseBtn = document.getElementById('modalCloseBtn2');
-
-  function showMaintenanceModal(){
-    maintenanceModal.classList.add('active');
-  }
-
-  function hideMaintenanceModal(){
-    maintenanceModal.classList.remove('active');
-  }
-
-  maintenanceModalOverlay.addEventListener('click', hideMaintenanceModal);
-  maintenanceModalCloseBtn.addEventListener('click', hideMaintenanceModal);
-
-  var bratInput = document.getElementById('bratInput');
-  var charCount = document.getElementById('charCount');
-  var submitBtn = document.getElementById('submitBtn');
-  var botOnline = false;
-
-  bratInput.addEventListener('input', function(){
-    var val = this.value.trim();
-    var len = this.value.length;
-    charCount.textContent = len;
-
-    if(val.length > 0){
-      submitBtn.disabled = false;
-    } else {
-      submitBtn.disabled = true;
-    }
-  });
-
-  submitBtn.addEventListener('click', function(){
-    var val = bratInput.value.trim();
-    if(!val) return;
-
-    if(!botOnline){
-      showMaintenanceModal();
-      return;
-    }
-
-    var text = encodeURIComponent(val);
-    window.open('https://wa.me/6285355613558?text=!brat ' + text, '_blank');
-  });
-
-  fetch('https://host.optikl.ink/bot/online')
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if(data && data.online === true){
-        botOnline = true;
-      } else {
-        botOnline = false;
-        showMaintenanceModal();
-      }
-    })
-    .catch(function(){
-      botOnline = false;
-      showMaintenanceModal();
-    })
-    .finally(function(){
-      setTimeout(startExpand, 700);
-    });
-
+  setTimeout(startExpand, 700);
 })();
 </script>
 </body>
